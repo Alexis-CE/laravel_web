@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    /** @use HasFactory<\Database\Factories\AnswerFactory> */
     use HasFactory;
+
+    // Relación con User
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

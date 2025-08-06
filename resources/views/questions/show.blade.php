@@ -1,5 +1,4 @@
 <x-forum.layouts.app>
-
 {{ $question->title }}
     <div class="flex items-center gap-2 w-full my-8">
         <div>&hearts;</div>
@@ -40,7 +39,29 @@
             {{ $question->description }}
         </p>
 
-        <!-- Comments -->      
+        <ul class="my-4 space-y-2">
+            @foreach ($question->comments as $comment)
+            <li class="flex items-center gap-2">
+                <p class="text-xs bg-white/10 p-4 rounded-md">
+                    <span class="text-gray-500">
+                        {{ $comment->user->name }} | 
+                        {{ $comment->created_at->diffForHumans() }}
+                    </span>
+                    <span class="text-gray-300">
+                        {{ $comment->content }}
+                    </span>
+                </p>
+
+                <div>&hearts;</div>
+            </li>
+            @endforeach
+        </ul>
+
+        <p class="text-gray-500">
+            <a href="#" class="rounded-md text-xs hover:underline cursor-pointer">
+                Agregar comentario
+            </a>
+        </p>
     </div>
     
     <ul class="space-y-4">
@@ -58,7 +79,29 @@
                         {{ $answer->created_at->diffForHumans() }}
                     </p>
                     
-                    <!-- Comments -->
+                    <ul class="my-4 space-y-2">
+                        @foreach ($answer->comments as $comment)
+                        <li class="flex items-center gap-2">
+                            <p class="text-xs bg-white/10 p-4 rounded-md">
+                                <span class="text-gray-500">
+                                    {{ $comment->user->name }} | 
+                                    {{ $comment->created_at->diffForHumans() }}
+                                </span>
+                                <span class="text-gray-300">
+                                    {{ $comment->content }}
+                                </span>
+                            </p>
+
+                            <div>&hearts;</div>
+                        </li>
+                        @endforeach
+                    </ul>
+
+                    <p class="text-gray-500">
+                        <a href="#" class="rounded-md text-xs hover:underline cursor-pointer">
+                            Agregar comentario
+                        </a>
+                    </p>
                 </div>
             </div>  
         </li>

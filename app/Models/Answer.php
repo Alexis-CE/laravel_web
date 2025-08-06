@@ -14,4 +14,10 @@ class Answer extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // Relación polimórfica con comentarios
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

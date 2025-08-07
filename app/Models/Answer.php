@@ -7,17 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+    /** @use HasFactory<\Database\Factories\AnswerFactory> */
     use HasFactory;
 
-    // Relación con User
+    protected $fillable = [
+        'content',
+        'user_id',
+    ];
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable'); // able
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    // Relación polimórfica con comentarios
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
     }
 }

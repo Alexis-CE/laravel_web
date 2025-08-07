@@ -12,7 +12,7 @@
                 </span>
             </p>
 
-            <livewire:heart :heartable="$comment" />
+            <livewire:heart :heartable="$comment" wire:key="comment-heart-{{ $comment->id }}" />
         </li>
         @endforeach
     </ul>
@@ -24,7 +24,6 @@
         </a>
     </p>
     @else
-    Formulario de comentario:
     <form wire:submit="add">
         <div class="flex gap-2">
             <input type="text" wire:model="content" class="w-full text-xs outline-none" placeholder="Escribe tu comentario aquí..." required autofocus>

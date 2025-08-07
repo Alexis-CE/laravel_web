@@ -27,4 +27,4 @@
     <textarea name="description" rows="6" class="w-full p-2 border border-gray-700 rounded-md">{{ old('description') }}</textarea>
 
     @error('description')<div class="text-red-500 text-xs">{{ $message }}</div>@enderror                
-</div>
+</div>  

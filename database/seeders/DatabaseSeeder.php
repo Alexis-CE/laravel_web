@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'i@test.com',
+            'password' => bcrypt('password'),
         ]);
 
         $categories = Category::factory(4)->create();

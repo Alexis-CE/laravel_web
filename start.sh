@@ -4,24 +4,16 @@ APP_NAME=laravel_web
 APP_ENV=production
 APP_KEY=${APP_KEY}
 APP_DEBUG=false
-APP_URL=${APP_URL}
-
-LOG_CHANNEL=stderr
-
+APP_URL=https://laravel-web-2f0e.onrender.com
 DB_CONNECTION=pgsql
 DB_HOST=${DB_HOST}
 DB_PORT=${DB_PORT}
 DB_DATABASE=${DB_DATABASE}
 DB_USERNAME=${DB_USERNAME}
 DB_PASSWORD=${DB_PASSWORD}
-
 SESSION_DRIVER=file
-SESSION_LIFETIME=120
 CACHE_STORE=file
-FILESYSTEM_DISK=local
-QUEUE_CONNECTION=sync
-
-VITE_APP_NAME=laravel_web
+LOG_CHANNEL=stderr
 EOF
 
 php artisan config:clear

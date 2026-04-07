@@ -7,11 +7,11 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-gradient-to-b from-neutral-950 to-neutral-900 text-white">
+<body class="min-h-screen">
     <div class="px-4 border-b border-neutral-800">
         <x-forum.navbar />
     </div>
-    
+
     <div class="mx-auto max-w-4xl px-4 pb-8">
         {{ $slot }}
     </div>

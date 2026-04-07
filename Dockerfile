@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     curl \
+    nodejs \
+    npm \
     && docker-php-ext-install pdo pdo_mysql pdo_pgsql mbstring exif pcntl bcmath
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -19,6 +21,8 @@ COPY . .
 RUN cp .env.example .env
 
 RUN composer install --no-dev --optimize-autoloader
+
+RUN npm install && npm run build
 
 RUN chmod -R 775 storage bootstrap/cache
 

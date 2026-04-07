@@ -9,7 +9,13 @@
     localStorage.removeItem('flux-appearance');
     localStorage.setItem('flux-appearance', 'light');
     document.documentElement.classList.remove('dark');
-    document.documentElement.classList.add('light');
+
+    const observer = new MutationObserver(() => {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+        }
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 </script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])

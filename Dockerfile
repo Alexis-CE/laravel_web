@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    libpq-dev \
     zip \
     unzip \
     curl \
@@ -24,4 +25,4 @@ RUN chmod -R 775 storage bootstrap/cache
 
 EXPOSE 8080
 
-CMD php artisan config:clear && php artisan serve --host=0.0.0.0 --port=8080
+CMD php artisan config:clear && php artisan serve --host=

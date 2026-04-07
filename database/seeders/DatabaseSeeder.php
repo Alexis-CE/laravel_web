@@ -15,12 +15,18 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-        public function run(): void
+    public function run(): void
     {
-        Category::insert([
-            ['name' => 'General', 'color' => '#6B7280'],
-            ['name' => 'Programación', 'color' => '#2563EB'],
-            ['name' => 'Otros', 'color' => '#10B981'],
+        User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@test.com',
+            'password' => bcrypt('password'),
+        ]);
+
+    Category::insert([
+        ['name' => 'General', 'color' => '#6B7280'],
+        ['name' => 'Programación', 'color' => '#2563EB'],
+        ['name' => 'Otros', 'color' => '#10B981'],
         ]);
     }
 }

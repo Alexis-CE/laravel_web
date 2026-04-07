@@ -19,6 +19,10 @@ WORKDIR /var/www
 # Copiar archivos
 COPY . .
 
+
+# Crear .env vacío para que composer no falle
+RUN cp .env.example .env
+
 # Instalar dependencias
 RUN composer install --no-dev --optimize-autoloader
 

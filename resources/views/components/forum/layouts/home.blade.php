@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foro de programación</title>
 
+    <script>
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+    </script>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
@@ -26,7 +31,7 @@
                 </div>
 
                 <div class="text-center">
-                    <h1 class="text-5xl font-semibold text-gray-900 sm:text-7xl">Bienvenido a tu foro favorito</h1>                        
+                    <h1 class="text-5xl font-semibold text-gray-900 sm:text-7xl">Bienvenido a tu foro favorito</h1>
                     <p class="my-8 text-lg font-medium text-gray-500 sm:text-xl">Es un espacio para compartir, aprender y crecer en el mundo de la programación. Únete a nuestra comunidad, participa en discusiones y aprende de otros profesionales.</p>
                     <div class="flex items-center justify-center gap-6">
                         <a href="{{ route('questions.create') }}" class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500">Preguntar</a>

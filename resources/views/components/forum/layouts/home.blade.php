@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foro de programación</title>
 
-    <script>
-        document.documentElement.classList.remove('dark');
-        document.documentElement.classList.add('light');
-    </script>
+<script>
+    localStorage.removeItem('flux-appearance');
+    localStorage.setItem('flux-appearance', 'light');
+    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.add('light');
+</script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

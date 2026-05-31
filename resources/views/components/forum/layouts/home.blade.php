@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foro de programación</title>
+    <title>Codelab - Foro de programación</title>
+<meta name="description" content="Resuelve tus preguntas de programación. Comparte, aprende y crece con nuestra comunidad."><title>Foro de programación</title>
 
 <script>
     localStorage.removeItem('flux-appearance');

@@ -3,7 +3,7 @@
         <livewire:heart :heartable="$question" />
 
         <div class="w-full">
-            <h2 class="text-2xl font-bold md:text-3xl">
+            <h2 class="text-gray-100">
                 {{ $question->title }}
             </h2>
 
@@ -62,7 +62,6 @@
                         {{ $answer->created_at->diffForHumans() }}
                     </p>
 
-                    <livewire:comment :commentable="$answer" />
                     <livewire:comment :commentable="$answer" wire:key="answer-comments-{{ $answer->id }}" />
                 </div>
             </div>  
@@ -72,13 +71,13 @@
 
     @auth
     <div class="mt-8">
-    <h3 class="text-lg font-semibold mb-2">Tu Respuesta...</h3>
+    <h3 class="text-gray-100">Tu Respuesta...</h3>
 
     <form action="{{ route('answers.store', $question) }}" method="POST">
         @csrf
 
         <div class="mb-2">
-            <textarea name="content" rows="6" class="w-full p-2 border rounded-md text-xs" required></textarea>
+            <textarea name="content" rows="6" class="w-full p-2 border rounded-md text-xs bg-neutral-800 border-neutral-700 text-gray-100" required></textarea>
             @error('content')<span class="block text-red-500 text-xs">{{ $message }}</span>@enderror
         </div>
 

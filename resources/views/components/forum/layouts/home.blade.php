@@ -24,7 +24,7 @@
 <body>
     <div class="h-screen flex flex-col">
         <div class="px-4">
-            <x-forum.navbar />
+            <x-forum.navbar :dark="true" />
         </div>
 
         <div class="relative h-full flex items-center justify-center">

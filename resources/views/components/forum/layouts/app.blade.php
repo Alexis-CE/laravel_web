@@ -7,8 +7,8 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen">
-    <div class="px-4 border-b border-neutral-800">
+<body class="min-h-screen bg-neutral-900 text-gray-100">
+    <div class="px-4 border-b border-neutral-700 bg-neutral-900">
         <x-forum.navbar />
     </div>
 

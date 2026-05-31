@@ -1,19 +1,29 @@
 <div>
     <ul class="my-4 space-y-2">
         @foreach ($comments as $comment)
-        <li class="flex items-center gap-2">
-            <p class="text-xs bg-white/10 p-4 rounded-md">
-                <span class="text-gray-500">
-                    {{ $comment->user->name }} | 
-                    {{ $comment->created_at->diffForHumans() }}
-                </span>
-                <span class="text-gray-300">
-                    {{ $comment->content }}
-                </span>
-            </p>
+        
+	<li class="flex items-center gap-2">
+    <p class="text-xs bg-white/10 p-4 rounded-md">
+        <span class="text-gray-500">
+            {{ $comment->user->name }} |
+            {{ $comment->created_at->diffForHumans() }}
+        </span>
+        <span class="text-gray-300">
+            {{ $comment->content }}
+        </span>
+    </p>
+    <livewire:heart :heartable="$comment" wire:key="comment-heart-{{ $comment->id }}" />
+    @auth
+    @if(auth()->id() === $comment->user_id || auth()->user()->is_admin)
+    <button wire:click="delete({{ $comment->id }})"
+        wire:confirm="¿Borrar este comentario?"
+        class="text-xs text-red-400 hover:text-red-300 cursor-pointer">
+        Borrar
+    </button>
+    @endif
+    @endauth
+</li>
 
-            <livewire:heart :heartable="$comment" wire:key="comment-heart-{{ $comment->id }}" />
-        </li>
         @endforeach
     </ul>
 

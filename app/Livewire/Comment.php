@@ -1,7 +1,6 @@
 <?php
-
 namespace App\Livewire;
-
+use App\Models\Comment as CommentModel;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 
@@ -25,6 +24,18 @@ class Comment extends Component
         $this->reset('content', 'showForm');
     }
 
+    public function delete(int $commentId)
+    {
+        $comment = CommentModel::findOrFail($commentId);
+
+        if (auth()->id() !== $comment->user_id && !auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        $comment->hearts()->delete();
+        $comment->delete();
+    }
+
     public function toggle()
     {
         $this->showForm = !$this->showForm;
@@ -33,7 +44,7 @@ class Comment extends Component
     public function render()
     {
         return view('livewire.comment', [
-            'comments' => $this->commentable->comments,
+            'comments' => $this->commentable->comments()->with('user')->get(),
         ]);
     }
 }

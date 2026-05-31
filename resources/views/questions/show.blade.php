@@ -3,7 +3,7 @@
         <livewire:heart :heartable="$question" />
 
         <div class="w-full">
-            <h2 class="text-gray-100">
+            <h2 class="text-2xl font-bold md:text-3xl text-gray-100">
                 {{ $question->title }}
             </h2>
 

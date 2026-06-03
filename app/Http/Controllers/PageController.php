@@ -15,4 +15,10 @@ class PageController extends Controller
             'questions' => $questions,
         ]);
     }
+
+    public function about()
+{
+    return view('about');
+}
+
 }

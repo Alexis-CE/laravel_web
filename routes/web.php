@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 
-    Route::view('acerca-de', 'about')->name('about');
+    Route::get('acerca-de', [PageController::class, 'about'])->name('about');
 });
 
 require __DIR__.'/auth.php';

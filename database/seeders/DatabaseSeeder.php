@@ -84,5 +84,49 @@ foreach ($questions as $q) {
     Question::create($q);
 }
 
+// Respuestas
+$answersData = [
+    '¿Por qué me sale "Undefined variable" en PHP si ya la declaré?' => [
+        'PHP tiene scope de variables. Las variables fuera de una función no son accesibles dentro a menos que uses `global $var` o la pases como parámetro. Lo más limpio es pasarla como argumento: `function miFuncion($variable) { ... }`',
+        'También puedes usar `use` en closures: `$fn = function() use ($miVar) { ... };`. Evita `global`, es mala práctica.',
+    ],
+    'Error: SQLSTATE[HY000] [2002] Connection refused en Laravel' => [
+        'Revisa tu `.env`: `DB_HOST=127.0.0.1` debe coincidir con donde corre tu base de datos. Si usas Docker, cambia a `DB_HOST=mysql` (el nombre del servicio). Luego corre `php artisan config:clear`.',
+        'También puede ser que MySQL no esté corriendo. En Linux: `sudo systemctl start mysql`. En Windows revisa que el servicio esté activo en el administrador de tareas.',
+    ],
+    '¿Cómo centrar un div horizontal y verticalmente en CSS?' => [
+        'Con Flexbox en el padre: `display: flex; align-items: center; justify-content: center;`. El padre necesita tener altura definida, por ejemplo `height: 100vh` para centrar en pantalla completa.',
+        'Con CSS Grid también funciona perfecto: `display: grid; place-items: center;`. Es la forma más corta y moderna.',
+    ],
+    'Git: ¿cómo deshacer el último commit sin perder los cambios?' => [
+        '`git reset --soft HEAD~1` — deshace el commit pero mantiene los cambios en staging listos para volver a commitear.',
+        'Si ya hiciste push, necesitas `git revert HEAD` en lugar de reset, para no reescribir el historial remoto.',
+    ],
+    '¿Cuál es la diferencia entre == y === en JavaScript?' => [
+        '`==` compara valores con coerción de tipos: `"5" == 5` es `true`. `===` compara valor Y tipo: `"5" === 5` es `false`. Siempre usa `===` para evitar bugs raros.',
+        'Ejemplo clásico: `null == undefined` es `true` con `==`, pero `false` con `===`. Por eso en proyectos serios se usa `===` por defecto.',
+    ],
+    'TypeError: Cannot read properties of undefined (reading "map")' => [
+        'El array llega `undefined` antes de que la API responda. Inicializa el estado con array vacío: `const [data, setData] = useState([])`. Así el `.map()` no explota mientras carga.',
+        'También puedes usar optional chaining: `data?.map(...)` o un guard `{data && data.map(...)}` en el JSX.',
+    ],
+    '¿Qué editor de código recomiendan para empezar a programar?' => [
+        'VS Code sin duda. Tiene el ecosistema de extensiones más grande, es gratuito y funciona para cualquier lenguaje. Instala: Prettier, ESLint y GitLens como mínimo.',
+        'Si tu compu es lenta, prueba Sublime Text — es más ligero. Pero a largo plazo VS Code vale la pena aprenderlo bien.',
+    ],
+];
+
+foreach ($answersData as $questionTitle => $answers) {
+    $question = Question::where('title', $questionTitle)->first();
+    if (!$question) continue;
+
+    foreach ($answers as $content) {
+        $question->answers()->create([
+            'user_id' => $admin->id,
+            'content' => $content,
+        ]);
+    }
+}
+
     }
 }

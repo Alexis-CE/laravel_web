@@ -33,6 +33,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/profile', Profile::class)->name('settings.profile');
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
+
+    Route::view('acerca-de', 'about')->name('about');
 });
 
 require __DIR__.'/auth.php';

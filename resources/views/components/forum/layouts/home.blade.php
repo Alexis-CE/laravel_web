@@ -35,7 +35,7 @@
             <div class="max-w-2xl">
                 <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                     <div class="rounded-full px-4 py-2 text-sm text-gray-600 border border-gray-300">
-                        Resuelve tus preguntas de programación. <a href="#" class="font-semibold text-indigo-600">Acerca de &rarr;</a>
+                        Resuelve tus preguntas de programación. <a href="{{ route('about') }}" class="font-semibold text-indigo-600">Acerca de &rarr;</a>
                     </div>
                 </div>
 

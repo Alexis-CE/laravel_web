@@ -11,19 +11,18 @@ use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
-    public function index()
-    {
-        $questions = Question::with([
-            'user',
-            'category',
-        ])
+public function index()
+{
+    $questions = Question::with(['user', 'category'])
+        ->withCount('answers')
         ->latest()
         ->paginate(24);
 
-        return view('questions.index', [
-            'questions' => $questions,
-        ]);
-    }
+    return view('questions.index', [
+        'questions'  => $questions,
+        'categories' => Category::all(),
+    ]);
+}
 
     public function create()
     {
@@ -61,7 +60,7 @@ class QuestionController extends Controller
         return redirect()->route('questions.show', $question);
     }
 
-    public function show(Question $question, QuestionShowLoader $loader) 
+    public function show(Question $question, QuestionShowLoader $loader)
     {
         $loader->load($question);
 

@@ -22,8 +22,8 @@
                         <li><a href="{{ route('questions.index') }}" class="block text-sm text-gray-300 hover:text-white px-2 py-1.5 rounded hover:bg-neutral-700 transition-colors {{ !request('categoria') ? 'bg-neutral-700 text-white' : '' }}">Todas</a></li>
                         @foreach($categories as $cat)
                         <li>
-                            <a href="{{ route('questions.index', ['categoria' => $cat->slug]) }}"
-                               class="block text-sm text-gray-300 hover:text-white px-2 py-1.5 rounded hover:bg-neutral-700 transition-colors {{ request('categoria') == $cat->slug ? 'bg-neutral-700 text-white' : '' }}">
+                            <a href="{{ route('questions.index', ['categoria' => $cat->name]) }}"
+                               class="block text-sm text-gray-300 hover:text-white px-2 py-1.5 rounded hover:bg-neutral-700 transition-colors {{ request('categoria') == $cat->name ? 'bg-neutral-700 text-white' : '' }}">
                                 {{ $cat->name }}
                             </a>
                         </li>

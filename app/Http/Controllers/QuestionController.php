@@ -16,7 +16,7 @@ public function index()
     $questions = Question::with(['user', 'category'])
         ->withCount('answers')
         ->when(request('categoria'), function ($q) {
-            $q->whereHas('category', fn($c) => $c->where('slug', request('categoria')));
+            $q->whereHas('category', fn($c) => $c->where('name', request('categoria')));
         })
         ->latest()
         ->paginate(24);

@@ -45,7 +45,7 @@
                            class="text-xs text-indigo-400 hover:text-indigo-300 border border-indigo-800 hover:border-indigo-600 px-3 py-1 rounded-full transition-colors">
                             GitHub →
                         </a>
-                        <a href="#" {{-- reemplaza con tu portafolio --}}
+                        <a href="https://alexis-ce.github.io" target="_blank"
                            class="text-xs text-gray-400 hover:text-white border border-neutral-600 hover:border-neutral-400 px-3 py-1 rounded-full transition-colors">
                             Portafolio →
                         </a>

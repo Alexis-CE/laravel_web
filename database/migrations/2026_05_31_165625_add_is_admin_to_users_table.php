@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    public $withinTransaction = false;
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
@@ -19,3 +20,4 @@ return new class extends Migration
         });
     }
 };
+

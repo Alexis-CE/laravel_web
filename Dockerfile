@@ -1,5 +1,4 @@
 FROM php:8.4-cli
-
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
@@ -8,27 +7,19 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     curl \
+    socat \
     nodejs \
     npm \
-    && docker-php-ext-install pdo pdo_mysql pdo_pgsql mbstring exif pcntl bcmath
-
+    && docker-php-ext-install pdo pdo_mysql pdo_pgsql mbstring exif pcntl bcmath \
+    && curl -fsSL https://tailscale.com/install.sh | sh
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
 WORKDIR /var/www
-
 COPY . .
-
 RUN cp .env.example .env
-
 RUN composer install --no-dev --optimize-autoloader
-
 RUN npm install && npm run build
-
 RUN chmod -R 775 storage bootstrap/cache
-
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
-
 EXPOSE 8080
-
 CMD ["/start.sh"]
